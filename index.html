@@ -118,16 +118,28 @@
           </div>
         </div>
       </div>
+
+      <!-- Divisor de Sección Ondulado de Pintura (De Azul Hero a Blanco Nosotros) -->
+      <div class="section-divider-brush text-bg-white" style="position: absolute; bottom: 0; left: 0; width: 100%;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 C120,30 240,10 360,40 C480,70 600,20 720,50 C840,80 960,30 1080,45 C1200,60 1320,25 1440,55 L1440,80 L0,80 Z"></path>
+        </svg>
+      </div>
     </section>
 
     <!-- Sección Nosotros (Historia, Misión y Visión) -->
-    <section id="nosotros" class="about-section section-padding reveal">
+    <section id="nosotros" class="about-section section-padding reveal" style="position: relative;">
       <div class="container">
         <div class="about-grid">
           <!-- Textos e Introducción -->
           <div class="about-text">
             <span class="badge" data-i18n="about.badge">Sobre Nosotros</span>
-            <h2 data-i18n="about.title">Pintores Profesionales con Pasión por el Detalle</h2>
+            <h2 class="brush-title text-left-align" data-i18n="about.title">Pintores Profesionales con Pasión por el Detalle
+              <svg class="brush-stroke-svg" viewBox="0 0 300 20" preserveAspectRatio="none">
+                <path class="stroke-bg" d="M10,12 C100,5 200,18 290,10" fill="none" stroke="var(--secondary-light)" stroke-width="6" stroke-linecap="round"></path>
+                <path class="stroke-main" d="M15,10 C90,3 190,15 285,8" fill="none" stroke="var(--accent-color)" stroke-width="5" stroke-linecap="round"></path>
+              </svg>
+            </h2>
             <p class="about-desc" data-i18n="about.description_1">
               En Mafali Bros Painting Service LLC, nos enorgullece ofrecer servicios de pintura residencial y comercial de la más alta calidad en Chicago, IL. Como empresa familiar, entendemos que tu hogar o negocio es tu mayor inversión. Por eso, tratamos cada proyecto con el máximo cuidado, preparación meticulosa y acabados impecables.
             </p>
@@ -139,45 +151,61 @@
           <!-- Misión y Visión (Tarjetas Flotantes) -->
           <div class="mv-container">
             <!-- Tarjeta Misión -->
-            <div class="mv-card reveal">
-              <div class="mv-header">
-                <div class="mv-icon-box">
-                  <svg class="mv-icon-svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
-                  </svg>
+            <div class="mv-card reveal-roller roller-primary">
+              <div class="roller-content">
+                <div class="mv-header">
+                  <div class="mv-icon-box">
+                    <svg class="mv-icon-svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>
+                    </svg>
+                  </div>
+                  <h3 data-i18n="about.mision_title">Nuestra Misión</h3>
                 </div>
-                <h3 data-i18n="about.mision_title">Nuestra Misión</h3>
+                <p data-i18n="about.mision_desc">
+                  Proporcionar servicios de pintura excepcionales y personalizados que embellezcan y protejan las propiedades de nuestros clientes, garantizando acabados duraderos y una experiencia sin estrés a través de la excelencia y el profesionalismo.
+                </p>
               </div>
-              <p data-i18n="about.mision_desc">
-                Proporcionar servicios de pintura excepcionales y personalizados que embellezcan y protejan las propiedades de nuestros clientes, garantizando acabados duraderos y una experiencia sin estrés a través de la excelencia y el profesionalismo.
-              </p>
             </div>
 
             <!-- Tarjeta Visión -->
-            <div class="mv-card reveal">
-              <div class="mv-header">
-                <div class="mv-icon-box">
-                  <svg class="mv-icon-svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
+            <div class="mv-card reveal-roller roller-primary">
+              <div class="roller-content">
+                <div class="mv-header">
+                  <div class="mv-icon-box">
+                    <svg class="mv-icon-svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </div>
+                  <h3 data-i18n="about.vision_title">Nuestra Visión</h3>
                 </div>
-                <h3 data-i18n="about.vision_title">Nuestra Visión</h3>
+                <p data-i18n="about.vision_desc">
+                  Ser reconocidos como la empresa de pintura residencial y comercial de referencia en Chicago y sus alrededores, destacando por nuestra integridad, calidad artesanal superior y el impacto transformador de nuestro trabajo.
+                </p>
               </div>
-              <p data-i18n="about.vision_desc">
-                Ser reconocidos como la empresa de pintura residencial y comercial de referencia en Chicago y sus alrededores, destacando por nuestra integridad, calidad artesanal superior y el impacto transformador de nuestro trabajo.
-              </p>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Divisor de Sección Ondulado de Pintura (De Blanco Nosotros a Gris Servicios) -->
+      <div class="section-divider-brush text-bg-light" style="position: absolute; bottom: 0; left: 0; width: 100%;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,80 C120,50 240,70 360,40 C480,10 600,60 720,30 C840,0 960,50 1080,35 C1200,20 1320,55 1440,25 L1440,0 L0,0 Z"></path>
+        </svg>
+      </div>
     </section>
 
     <!-- Sección Servicios (Grid de Componentes Reutilizables) -->
-    <section id="servicios" class="services-section section-padding">
+    <section id="servicios" class="services-section section-padding" style="position: relative;">
       <div class="container text-center">
         <div class="services-header reveal">
           <span class="badge" data-i18n="services.badge">Qué Hacemos</span>
-          <h2 data-i18n="services.title">Nuestros Servicios Especializados</h2>
+          <h2 class="brush-title" data-i18n="services.title">Nuestros Servicios Especializados
+            <svg class="brush-stroke-svg" viewBox="0 0 300 20" preserveAspectRatio="none">
+              <path class="stroke-bg" d="M10,12 C100,5 200,18 290,10" fill="none" stroke="var(--secondary-light)" stroke-width="6" stroke-linecap="round"></path>
+              <path class="stroke-main" d="M15,10 C90,3 190,15 285,8" fill="none" stroke="var(--accent-color)" stroke-width="5" stroke-linecap="round"></path>
+            </svg>
+          </h2>
           <p data-i18n="services.subtitle">
             Ofrecemos soluciones completas de pintura para interiores y exteriores, utilizando materiales de primera calidad para garantizar resultados duraderos.
           </p>
@@ -186,6 +214,13 @@
         <!-- Contenedor donde se inyectan las tarjetas de servicio dinámicamente con JS -->
         <div class="services-grid"></div>
       </div>
+
+      <!-- Divisor de Sección Ondulado de Pintura (De Gris Servicios a Blanco Portafolio) -->
+      <div class="section-divider-brush text-bg-white" style="position: absolute; bottom: 0; left: 0; width: 100%;">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,0 C120,40 240,20 360,55 C480,90 600,30 720,65 C840,100 960,40 1080,60 C1200,80 1320,35 1440,70 L1440,80 L0,80 Z"></path>
+        </svg>
+      </div>
     </section>
 
     <!-- Sección Portafolio (Galería Interactiva con Filtros) -->
@@ -193,7 +228,12 @@
       <div class="container text-center">
         <div class="portfolio-header reveal">
           <span class="badge" data-i18n="portfolio.badge">Nuestro Trabajo</span>
-          <h2 data-i18n="portfolio.title">Galería de Proyectos</h2>
+          <h2 class="brush-title" data-i18n="portfolio.title">Galería de Proyectos
+            <svg class="brush-stroke-svg" viewBox="0 0 300 20" preserveAspectRatio="none">
+              <path class="stroke-bg" d="M10,12 C100,5 200,18 290,10" fill="none" stroke="var(--secondary-light)" stroke-width="6" stroke-linecap="round"></path>
+              <path class="stroke-main" d="M15,10 C90,3 190,15 285,8" fill="none" stroke="var(--accent-color)" stroke-width="5" stroke-linecap="round"></path>
+            </svg>
+          </h2>
           <p data-i18n="portfolio.subtitle">
             Una muestra del cuidado, profesionalismo y detalle que aplicamos en cada trabajo de pintura en Chicago y suburbios.
           </p>
@@ -215,112 +255,122 @@
     </section>
 
     <!-- Sección Contacto y Formulario -->
-    <section id="contacto" class="contact-section section-padding reveal">
+    <section id="contacto" class="contact-section section-padding reveal" style="position: relative;">
       <div class="container">
         <div class="contact-grid">
           
           <!-- Datos e Información de Contacto -->
-          <div class="contact-info-panel">
-            <span class="badge" data-i18n="contact.badge">Contacto</span>
-            <h2 data-i18n="contact.title">¿Listo para Transformar tu Espacio?</h2>
-            <p class="subtitle" data-i18n="contact.subtitle">
-              Ponte en contacto con Oscar, nuestro especialista, para agendar una cotización sin compromiso o resolver cualquier duda.
-            </p>
-            
-            <ul class="contact-detail-list">
-              <!-- Teléfono -->
-              <li class="contact-detail-item reveal">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                  </svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4 data-i18n="contact.phone_label">Llamada Directa (Oscar/Especialista)</h4>
-                  <a href="tel:7737299252" class="contact-value" data-i18n="contact.phone_value">(773) 729-9252</a>
-                </div>
-              </li>
+          <div class="contact-info-panel reveal-roller roller-primary">
+            <div class="roller-content">
+              <span class="badge" data-i18n="contact.badge">Contacto</span>
+              <h2 class="brush-title text-left-align" data-i18n="contact.title">¿Listo para Transformar tu Espacio?
+                <svg class="brush-stroke-svg" viewBox="0 0 300 20" preserveAspectRatio="none">
+                  <path class="stroke-bg" d="M10,12 C100,5 200,18 290,10" fill="none" stroke="var(--secondary-light)" stroke-width="6" stroke-linecap="round"></path>
+                  <path class="stroke-main" d="M15,10 C90,3 190,15 285,8" fill="none" stroke="var(--accent-color)" stroke-width="5" stroke-linecap="round"></path>
+                </svg>
+              </h2>
+              <p class="subtitle" data-i18n="contact.subtitle">
+                Ponte en contacto con Oscar, nuestro especialista, para agendar una cotización sin compromiso o resolver cualquier duda.
+              </p>
               
-              <!-- Horario -->
-              <li class="contact-detail-item reveal">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
-                  </svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4 data-i18n="contact.schedule_label">Horario de Atención</h4>
-                  <p class="contact-value" data-i18n="contact.schedule_value">Lunes a Sábado: 8:00 AM - 6:00 PM</p>
-                </div>
-              </li>
+              <ul class="contact-detail-list">
+                <!-- Teléfono -->
+                <li class="contact-detail-item reveal">
+                  <div class="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                  </div>
+                  <div class="contact-detail-text">
+                    <h4 data-i18n="contact.phone_label">Llamada Directa (Oscar/Especialista)</h4>
+                    <a href="tel:7737299252" class="contact-value" data-i18n="contact.phone_value">(773) 729-9252</a>
+                  </div>
+                </li>
+                
+                <!-- Horario -->
+                <li class="contact-detail-item reveal">
+                  <div class="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                  </div>
+                  <div class="contact-detail-text">
+                    <h4 data-i18n="contact.schedule_label">Horario de Atención</h4>
+                    <p class="contact-value" data-i18n="contact.schedule_value">Lunes a Sábado: 8:00 AM - 6:00 PM</p>
+                  </div>
+                </li>
 
-              <!-- Cobertura -->
-              <li class="contact-detail-item reveal">
-                <div class="contact-detail-icon">
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="12" r="3"/>
-                  </svg>
-                </div>
-                <div class="contact-detail-text">
-                  <h4>Ubicación / Coverage</h4>
-                  <p class="contact-value">Chicago, IL & Suburbs</p>
-                </div>
-              </li>
-            </ul>
+                <!-- Cobertura -->
+                <li class="contact-detail-item reveal">
+                  <div class="contact-detail-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </div>
+                  <div class="contact-detail-text">
+                    <h4>Ubicación / Coverage</h4>
+                    <p class="contact-value">Chicago, IL & Suburbs</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
 
           <!-- Formulario de Contacto Interactivo -->
-          <div class="contact-form-card">
-            <form id="contact-form" autocomplete="on">
-              <div class="form-group-grid">
-                <!-- Nombre -->
-                <div class="form-group">
-                  <label for="name" data-i18n="contact.form_name">Nombre Completo</label>
-                  <input type="text" id="name" name="name" required data-i18n-placeholder="contact.form_name">
+          <div class="contact-form-card reveal-roller roller-accent">
+            <div class="roller-content">
+              <form id="contact-form" autocomplete="on">
+                <div class="form-group-grid">
+                  <!-- Nombre -->
+                  <div class="form-group">
+                    <label for="name" data-i18n="contact.form_name">Nombre Completo</label>
+                    <input type="text" id="name" name="name" required data-i18n-placeholder="contact.form_name">
+                  </div>
+                  <!-- Teléfono -->
+                  <div class="form-group">
+                    <label for="phone" data-i18n="contact.form_phone">Teléfono</label>
+                    <input type="tel" id="phone" name="phone" required data-i18n-placeholder="contact.form_phone">
+                  </div>
                 </div>
-                <!-- Teléfono -->
-                <div class="form-group">
-                  <label for="phone" data-i18n="contact.form_phone">Teléfono</label>
-                  <input type="tel" id="phone" name="phone" required data-i18n-placeholder="contact.form_phone">
+
+                <div class="form-group-grid">
+                  <!-- Correo -->
+                  <div class="form-group">
+                    <label for="email" data-i18n="contact.form_email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required data-i18n-placeholder="contact.form_email">
+                  </div>
+                  <!-- Servicio -->
+                  <div class="form-group">
+                    <label for="service" data-i18n="contact.form_service">Servicio Requerido</label>
+                    <select id="service" name="service" required data-i18n-select="contact.form_service_options">
+                      <option value="" disabled selected data-i18n-opt-placeholder="contact.form_service_placeholder">Selecciona un servicio</option>
+                      <option value="interior">Pintura de Interiores</option>
+                      <option value="exterior">Pintura de Exteriores</option>
+                      <option value="commercial">Pintura Comercial / Otro</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
 
-              <div class="form-group-grid">
-                <!-- Correo -->
-                <div class="form-group">
-                  <label for="email" data-i18n="contact.form_email">Correo Electrónico</label>
-                  <input type="email" id="email" name="email" required data-i18n-placeholder="contact.form_email">
+                <!-- Mensaje -->
+                <div class="form-group full-width">
+                  <label for="message" data-i18n="contact.form_message">Cuéntanos sobre tu proyecto</label>
+                  <textarea id="message" name="message" required data-i18n-placeholder="contact.form_message_placeholder"></textarea>
                 </div>
-                <!-- Servicio -->
-                <div class="form-group">
-                  <label for="service" data-i18n="contact.form_service">Servicio Requerido</label>
-                  <select id="service" name="service" required data-i18n-select="contact.form_service_options">
-                    <option value="" disabled selected data-i18n-opt-placeholder="contact.form_service_placeholder">Selecciona un servicio</option>
-                    <option value="interior">Pintura de Interiores</option>
-                    <option value="exterior">Pintura de Exteriores</option>
-                    <option value="commercial">Pintura Comercial / Otro</option>
-                  </select>
-                </div>
-              </div>
 
-              <!-- Mensaje -->
-              <div class="form-group full-width">
-                <label for="message" data-i18n="contact.form_message">Cuéntanos sobre tu proyecto</label>
-                <textarea id="message" name="message" required data-i18n-placeholder="contact.form_message_placeholder"></textarea>
-              </div>
+                <!-- Botón de Envío -->
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                  <span data-i18n="contact.form_submit">Enviar Solicitud</span>
+                </button>
 
-              <!-- Botón de Envío -->
-              <button type="submit" class="btn btn-primary" style="width: 100%;">
-                <span data-i18n="contact.form_submit">Enviar Solicitud</span>
-              </button>
-
-              <!-- Alerta de Respuesta del Formulario -->
-              <div id="form-alert" class="form-alert"></div>
-            </form>
+                <!-- Alerta de Respuesta del Formulario -->
+                <div id="form-alert" class="form-alert"></div>
+              </form>
+            </div>
           </div>
 
         </div>
       </div>
+
     </section>
 
   </main>
@@ -333,12 +383,14 @@
 
   <!-- Template Reutilizable para Tarjetas de Servicio -->
   <template id="service-card-template">
-    <div class="service-card reveal">
-      <div class="service-icon-wrapper">
-        <!-- Icono SVG inyectado con JavaScript -->
+    <div class="service-card reveal-roller roller-accent">
+      <div class="roller-content">
+        <div class="service-icon-wrapper">
+          <!-- Icono SVG inyectado con JavaScript -->
+        </div>
+        <h3 class="service-title"></h3>
+        <p class="service-desc"></p>
       </div>
-      <h3 class="service-title"></h3>
-      <p class="service-desc"></p>
     </div>
   </template>
 
@@ -358,14 +410,16 @@
 
   <!-- Template Reutilizable para Tarjetas de Portafolio -->
   <template id="portfolio-card-template">
-    <div class="portfolio-item reveal" data-category="">
-      <div class="portfolio-img-wrapper">
-        <img class="portfolio-img" src="" alt="" loading="lazy" width="400" height="300">
-        <!-- Overlay de Información en Hover -->
-        <div class="portfolio-overlay-info">
-          <span class="portfolio-item-category"></span>
-          <h3 class="portfolio-item-title"></h3>
-          <span class="portfolio-zoom-icon">🔍</span>
+    <div class="portfolio-item reveal-roller roller-primary" data-category="">
+      <div class="roller-content" style="width:100%; height:100%;">
+        <div class="portfolio-img-wrapper">
+          <img class="portfolio-img" src="" alt="" loading="lazy" width="400" height="300">
+          <!-- Overlay de Información en Hover -->
+          <div class="portfolio-overlay-info">
+            <span class="portfolio-item-category"></span>
+            <h3 class="portfolio-item-title"></h3>
+            <span class="portfolio-zoom-icon">🔍</span>
+          </div>
         </div>
       </div>
     </div>

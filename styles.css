@@ -123,12 +123,26 @@ button, input, select, textarea {
   font-weight: 600;
   border-radius: var(--border-radius-pill);
   cursor: pointer;
-  transition: var(--transition-smooth);
+  transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s ease, box-shadow 0.3s ease;
   font-size: 0.95rem;
   letter-spacing: 0.3px;
   position: relative;
   overflow: hidden;
   z-index: 1;
+}
+
+/* Pseudo-elemento de brochazo de pintura */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 0;
+  height: 100%;
+  z-index: -1;
+  transform: skewX(-20deg);
+  transform-origin: left;
+  transition: width 0.5s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 .btn-primary {
@@ -137,22 +151,38 @@ button, input, select, textarea {
   box-shadow: 0 4px 15px rgba(var(--accent-rgb), 0.3);
 }
 
+.btn-primary::before {
+  background-color: var(--primary-color);
+}
+
 .btn-primary:hover {
-  background-color: var(--accent-hover);
-  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
-  transform: translateY(-2px);
+  color: var(--text-light);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.4);
+  transform: translateY(-3px);
+}
+
+.btn-primary:hover::before {
+  width: calc(100% + 40px);
 }
 
 .btn-secondary {
   background-color: transparent;
   color: var(--primary-color);
-  border: 2px stroke var(--primary-color);
   border: 2px solid var(--primary-color);
 }
 
+.btn-secondary::before {
+  background-color: var(--primary-color);
+}
+
 .btn-secondary:hover {
-  background-color: rgba(var(--primary-rgb), 0.05);
-  transform: translateY(-2px);
+  color: var(--text-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb), 0.3);
+}
+
+.btn-secondary:hover::before {
+  width: calc(100% + 40px);
 }
 
 .btn-light {
@@ -161,10 +191,18 @@ button, input, select, textarea {
   box-shadow: var(--shadow-md);
 }
 
+.btn-light::before {
+  background-color: var(--accent-color);
+}
+
 .btn-light:hover {
-  background-color: var(--bg-light);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-lg);
+  color: var(--text-light);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(var(--accent-rgb), 0.4);
+}
+
+.btn-light:hover::before {
+  width: calc(100% + 40px);
 }
 
 /* Etiquetas (Badges) */
@@ -192,19 +230,55 @@ header {
   width: 100%;
   z-index: 1000;
   transition: var(--transition-smooth);
+  padding: 16px 24px;
+  display: flex;
+  justify-content: center;
+  pointer-events: none; /* Permite clicks en el fondo fuera de la barra */
 }
 
-.navbar-placeholder-div {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+.navbar-inner {
+  background-color: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: var(--border-radius-pill);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  width: 100%;
+  max-width: 1200px;
+  transition: var(--transition-smooth);
+  position: relative;
+  pointer-events: auto; /* Reactiva los clicks dentro de la barra */
+}
+
+/* Trazo de pincelada decorativo debajo de la navbar flotante */
+.navbar-inner::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 10%;
+  width: 80%;
+  height: 6px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 10' preserveAspectRatio='none'%3E%3Cpath d='M5,5 Q75,1 150,6 T295,4' fill='none' stroke='%23C84B31' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  opacity: 0.85;
+  z-index: -1;
+  transition: var(--transition-smooth);
 }
 
 header.scrolled {
+  padding: 10px 24px;
+}
+
+header.scrolled .navbar-inner {
   background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: var(--shadow-sm);
-  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--border-color);
+}
+
+header.scrolled .navbar-inner::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 10' preserveAspectRatio='none'%3E%3Cpath d='M5,5 Q75,1 150,6 T295,4' fill='none' stroke='%23052659' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"); /* Pincelada cambia a azul primario en scroll */
+  opacity: 0.6;
 }
 
 header.scrolled .nav-container {
@@ -216,8 +290,7 @@ header.scrolled .nav-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding: 14px 32px;
   transition: var(--transition-smooth);
 }
 
@@ -345,6 +418,24 @@ header.scrolled .nav-container {
 
 /* Media Query Menú Móvil */
 @media (max-width: 1023px) {
+  header {
+    padding: 8px 12px;
+  }
+  
+  .navbar-inner {
+    border-radius: var(--border-radius-md);
+  }
+
+  .navbar-inner::after {
+    left: 5%;
+    width: 90%;
+    bottom: -5px;
+  }
+
+  .nav-container {
+    padding: 10px 20px;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -855,8 +946,30 @@ header.scrolled .nav-container {
 footer {
   background: linear-gradient(180deg, #091322 0%, #030a14 100%);
   color: rgba(255, 255, 255, 0.65);
-  padding: 48px 0 24px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 24px 0 24px 0;
+  border-top: none;
+  position: relative;
+}
+
+/* Divisor Ondulado Superior del Footer */
+.footer-divider-wave {
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  margin-top: -103px; /* Sube la onda para solapar la sección anterior y eliminar bordes rectos */
+  position: relative;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.footer-divider-wave svg {
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 80px;
+}
+
+.footer-divider-wave svg path {
+  fill: #091322;
 }
 
 /* Fila Superior: Marca y Redes */
@@ -1659,10 +1772,207 @@ footer {
 .reveal {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .reveal.active {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ==========================================================================
+   Efecto Rodillo de Pintura (Paint Roller Reveal)
+   ========================================================================== */
+.reveal-roller {
+  position: relative;
+  overflow: hidden;
+}
+
+/* El contenido interno está oculto inicialmente y aparece en el medio de la pasada */
+.reveal-roller .roller-content {
+  opacity: 0;
+  transition: opacity 0.1s ease 0.4s;
+}
+
+.reveal-roller.active .roller-content {
+  opacity: 1;
+}
+
+/* Pseudo-elemento de rodillo que barre verticalmente */
+.reveal-roller::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-light); /* Color rodillo por defecto */
+  z-index: 10;
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+.reveal-roller.roller-accent::before {
+  background-color: var(--accent-color);
+}
+
+.reveal-roller.roller-primary::before {
+  background-color: var(--primary-color);
+}
+
+/* Animación del barrido de pintura */
+.reveal-roller.active::before {
+  animation: rollerPaint 0.85s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes rollerPaint {
+  0% {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  49% {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: bottom;
+  }
+  100% {
+    transform: scaleY(0);
+    transform-origin: bottom;
+  }
+}
+
+/* ==========================================================================
+   Subrayados Vectoriales de Brochazo (Brush Stroke Underline)
+   ========================================================================== */
+.brush-title {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 18px !important;
+  margin-bottom: 24px;
+}
+
+.brush-stroke-svg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 14px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* En alineación a la izquierda (como en Nosotros o Contacto) */
+.text-left-align .brush-stroke-svg {
+  left: 0;
+  transform: none;
+}
+
+.brush-stroke-svg path.stroke-bg {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 1s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.2;
+}
+
+.brush-stroke-svg path.stroke-main {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  transition: stroke-dashoffset 1.2s cubic-bezier(0.25, 1, 0.5, 1) 0.15s;
+}
+
+/* Cuando se activa el contenedor reveal o el título directo */
+.active .brush-stroke-svg path.stroke-bg,
+.reveal.active .brush-stroke-svg path.stroke-bg,
+.brush-title.active .brush-stroke-svg path.stroke-bg {
+  stroke-dashoffset: 0;
+}
+
+.active .brush-stroke-svg path.stroke-main,
+.reveal.active .brush-stroke-svg path.stroke-main,
+.brush-title.active .brush-stroke-svg path.stroke-main {
+  stroke-dashoffset: 0;
+}
+
+/* ==========================================================================
+   Divisores de Sección Artísticos (Brush / Paint Wave Dividers)
+   ========================================================================== */
+.section-divider-brush {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+  z-index: 5;
+  background-color: transparent;
+}
+
+.section-divider-brush svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* Ajustes de color para fondos */
+.section-divider-brush.text-bg-light svg path {
+  fill: var(--bg-light);
+}
+
+.section-divider-brush.text-bg-white svg path {
+  fill: var(--bg-white);
+}
+
+.section-divider-brush.text-primary svg path {
+  fill: var(--primary-color);
+}
+
+@media (max-width: 767px) {
+  .section-divider-brush svg {
+    height: 35px;
+  }
+}
+
+/* Interacciones visuales refinadas para tarjetas */
+.service-card {
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+              box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02) !important;
+  border-color: rgba(var(--accent-rgb), 0.3) !important;
+}
+
+.service-card:hover::after {
+  transform: scaleX(1);
+}
+
+.portfolio-item {
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+              border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+}
+
+.portfolio-item:hover {
+  transform: scale(1.03) rotate(0.5deg) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-color: rgba(var(--secondary-rgb), 0.3) !important;
+}
+

@@ -246,10 +246,9 @@ function renderDynamicServices() {
     if (desc) desc.textContent = service.description;
 
     // Agregar clase de animación
-    const element = clone.querySelector(".reveal");
-    if (element) {
-      // Se le añade reveal para que entre con animación
-      element.classList.add("reveal");
+    const element = clone.querySelector(".reveal, .reveal-roller");
+    if (element && !element.classList.contains("active")) {
+      // Nos aseguramos de inicializarlo si no está activo
     }
 
     // Insertar en el DOM
@@ -332,7 +331,7 @@ function showFormAlert(alertEl, message, type) {
  */
 let scrollObserver = null;
 function setupScrollAnimations() {
-  const revealElements = document.querySelectorAll(".reveal");
+  const revealElements = document.querySelectorAll(".reveal, .reveal-roller, .brush-title");
   if (revealElements.length === 0) return;
 
   // Desconectar observador existente si hay re-renderizado
@@ -343,7 +342,7 @@ function setupScrollAnimations() {
   const observerOptions = {
     root: null,
     rootMargin: "0px",
-    threshold: 0.12 // El elemento se activa cuando se ve al menos un 12%
+    threshold: 0.10 // Activación temprana para mayor fluidez
   };
 
   scrollObserver = new IntersectionObserver((entries, observer) => {
