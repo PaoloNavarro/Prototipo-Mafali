@@ -1976,3 +1976,297 @@ footer {
   border-color: rgba(var(--secondary-rgb), 0.3) !important;
 }
 
+/* ==========================================================================
+   Efectos de Brillo Dinámico (3D Tilt Glare Overlay)
+   ========================================================================== */
+.glare-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 5;
+  mix-blend-mode: overlay;
+  transition: background 0.1s ease;
+  border-radius: inherit;
+}
+
+/* ==========================================================================
+   Selector de Modos del Portafolio
+   ========================================================================== */
+.portfolio-mode-selector {
+  display: inline-flex;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  padding: 4px;
+  border-radius: var(--border-radius-pill);
+  margin-bottom: 40px;
+}
+
+.mode-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  border-radius: var(--border-radius-pill);
+  font-family: var(--font-headings);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.mode-btn svg {
+  stroke: currentColor;
+}
+
+.mode-btn:hover {
+  color: var(--primary-color);
+}
+
+.mode-btn.active {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==========================================================================
+   Widget Deslizador Antes/Después Interactivo (Paint Roller Before/After Slider)
+   ========================================================================== */
+.before-after-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 56px auto;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-color);
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.before-after-slider {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  user-select: none;
+  --clip-percent: 50%;
+  --handle-left: 50%;
+}
+
+.slider-img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  pointer-events: none;
+}
+
+.img-before {
+  background-position: left center;
+  clip-path: inset(0 var(--clip-percent) 0 0);
+  z-index: 2;
+}
+
+.img-after {
+  background-position: right center;
+  z-index: 1;
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  left: var(--handle-left);
+  width: 4px;
+  height: 100%;
+  background-color: var(--text-light);
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  cursor: ew-resize;
+  pointer-events: none;
+}
+
+.handle-line {
+  width: 2px;
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 0 4px rgba(0,0,0,0.3);
+}
+
+.handle-button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  border: 3px solid var(--text-light);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.before-after-container:hover .handle-button {
+  transform: scale(1.1);
+  background-color: var(--accent-hover);
+}
+
+.slider-range-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: ew-resize;
+  z-index: 4;
+  margin: 0;
+}
+
+.slider-label {
+  position: absolute;
+  bottom: 20px;
+  background-color: rgba(9, 19, 34, 0.75);
+  color: var(--text-light);
+  padding: 6px 14px;
+  border-radius: var(--border-radius-sm);
+  font-family: var(--font-headings);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.label-before {
+  left: 20px;
+}
+
+.label-after {
+  right: 20px;
+}
+
+@media (max-width: 576px) {
+  .before-after-container {
+    aspect-ratio: 4 / 3;
+  }
+  .slider-img {
+    background-size: cover; /* Ajuste adaptado para relaciones de aspecto móvil */
+  }
+  .slider-label {
+    bottom: 12px;
+    padding: 4px 10px;
+    font-size: 0.7rem;
+  }
+  .label-before { left: 12px; }
+  .label-after { right: 12px; }
+}
+
+/* ==========================================================================
+   Carrusel 3D Coverflow (Muestrario Giratorio de Pinturas)
+   ========================================================================== */
+.portfolio-carousel-3d {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 440px;
+  margin: 0 auto;
+  perspective: 1200px;
+  transform-style: preserve-3d;
+  display: none; /* Se maneja en JS */
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-carousel-3d.active {
+  display: flex;
+}
+
+.carousel-item-3d {
+  position: absolute;
+  width: 320px;
+  height: 240px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  z-index: 1;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.carousel-item-3d.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.carousel-item-3d .portfolio-item {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-white);
+}
+
+.carousel-item-3d.active-item .portfolio-item {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--secondary-light);
+}
+
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--bg-white);
+  color: var(--primary-color);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  border: 1px solid var(--border-color);
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.carousel-nav-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-prev-btn { left: -10px; }
+.carousel-next-btn { right: -10px; }
+
+@media (max-width: 768px) {
+  .portfolio-carousel-3d {
+    height: 360px;
+  }
+  .carousel-item-3d {
+    width: 260px;
+    height: 195px;
+  }
+  .carousel-prev-btn { left: 10px; }
+  .carousel-next-btn { right: 10px; }
+}
+

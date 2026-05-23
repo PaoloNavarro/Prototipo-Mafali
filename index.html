@@ -239,7 +239,47 @@
           </p>
         </div>
 
-        <!-- Botones de Filtrado de Categoría -->
+        <!-- Widget Deslizador Antes y Después Interactivo (Opción 1 - Rodillo de Pintura) -->
+        <div class="before-after-container reveal" id="before-after-container">
+          <div class="before-after-slider" id="before-after-slider">
+            <!-- Imagen del Después (Fondo) -->
+            <div class="slider-img img-after" style="background-image: url('assets/before_after_painting.png');"></div>
+            <!-- Imagen del Antes (Capa Superior Recortada) -->
+            <div class="slider-img img-before" style="background-image: url('assets/before_after_painting.png');"></div>
+            
+            <!-- Barra divisora y tirador -->
+            <div class="slider-handle" id="slider-handle">
+              <div class="handle-line"></div>
+              <div class="handle-button">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="12 8 8 12 12 16"/><polyline points="12 16 16 12 12 8"/>
+                </svg>
+              </div>
+              <div class="handle-line"></div>
+            </div>
+            
+            <!-- Control de rango deslizador invisible encima para interacción fluida -->
+            <input type="range" min="0" max="100" value="50" class="slider-range-input" id="slider-range-input" aria-label="Deslizador Antes y Después">
+
+            <!-- Etiquetas de Idioma -->
+            <span class="slider-label label-before" data-i18n="portfolio.before">Antes</span>
+            <span class="slider-label label-after" data-i18n="portfolio.after">Después</span>
+          </div>
+        </div>
+
+        <!-- Selector de Modo de Visualización del Portafolio (Wow-Factor) -->
+        <div class="portfolio-mode-selector reveal">
+          <button class="mode-btn active" data-mode="grid" aria-label="Vista Grilla Interactiva 3D">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-i18n="portfolio.modes.grid">Grilla 3D</span>
+          </button>
+          <button class="mode-btn" data-mode="carousel" aria-label="Vista Carrusel 3D Muestrario">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 18h16V6H4v12z M12 6v12 M8 6v12 M16 6v12"/></svg>
+            <span data-i18n="portfolio.modes.carousel">Carrusel 3D</span>
+          </button>
+        </div>
+
+        <!-- Botones de Filtrado de Categoría (Para la vista de portafolio activa) -->
         <div class="portfolio-filters reveal" id="portfolio-filters">
           <button class="filter-btn active" data-filter="all" data-i18n="portfolio.categories.all">Todos</button>
           <button class="filter-btn" data-filter="interior" data-i18n="portfolio.categories.interior">Interiores</button>
@@ -247,9 +287,18 @@
           <button class="filter-btn" data-filter="commercial" data-i18n="portfolio.categories.commercial">Comerciales</button>
         </div>
 
-        <!-- Contenedor de la Galería -->
+        <!-- Contenedor de la Galería (Modo Grilla 3D) -->
         <div class="portfolio-grid" id="portfolio-grid">
           <!-- Tarjetas del portafolio inyectadas por JS -->
+        </div>
+
+        <!-- Contenedor del Carrusel 3D (Modo Carrusel Coverflow) -->
+        <div class="portfolio-carousel-3d" id="portfolio-carousel-3d">
+          <button class="carousel-nav-btn carousel-prev-btn" id="carousel-prev" aria-label="Proyecto anterior">‹</button>
+          <div class="carousel-inner-3d" id="carousel-inner-3d" style="position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; transform-style:preserve-3d;">
+            <!-- Tarjetas 3D inyectadas por JS -->
+          </div>
+          <button class="carousel-nav-btn carousel-next-btn" id="carousel-next" aria-label="Siguiente proyecto">›</button>
         </div>
       </div>
     </section>

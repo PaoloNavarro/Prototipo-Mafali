@@ -45,6 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
     setupWhatsAppChatbot();
     setupPortfolioFilters();
     setupLightbox();
+    setupBeforeAfterSlider();
+    setupPortfolioModeSelector();
+    setupTiltEffects();
   });
 });
 
@@ -630,29 +633,32 @@ function setupPortfolioFilters() {
   });
 }
 
-/**
- * Aplica el filtrado físico en la grilla mediante clases CSS animadas
- */
 function applyPortfolioFilter(filter) {
   AppState.activeFilter = filter;
-  const items = document.querySelectorAll(".portfolio-item");
+  const items = document.querySelectorAll("#portfolio-grid .portfolio-item");
   
   // Limpiar y poblar los ítems filtrados activos
   AppState.filteredItems = AppState.portfolioItems.filter(item => filter === "all" || item.category === filter);
 
-  items.forEach(item => {
-    const itemCat = item.getAttribute("data-category");
-    if (filter === "all" || itemCat === filter) {
-      item.classList.remove("fade-out");
-      item.classList.add("fade-in");
-    } else {
-      item.classList.remove("fade-in");
-      item.classList.add("fade-out");
-    }
-  });
-  
-  // Re-inicializar Intersection Observer para animar las tarjetas filtradas visibles
-  setupScrollAnimations();
+  if (portfolioViewMode === 'grid') {
+    items.forEach(item => {
+      const itemCat = item.getAttribute("data-category");
+      if (filter === "all" || itemCat === filter) {
+        item.classList.remove("fade-out");
+        item.classList.add("fade-in");
+      } else {
+        item.classList.remove("fade-in");
+        item.classList.add("fade-out");
+      }
+    });
+    
+    // Re-inicializar Intersection Observer y los efectos de inclinación 3D
+    setupScrollAnimations();
+    setupTiltEffects();
+  } else {
+    // Si estamos en modo carrusel, re-renderizar el carrusel con el nuevo filtro
+    renderPortfolioCarousel3D();
+  }
 }
 
 /**
@@ -760,10 +766,263 @@ function showLightboxImage(index) {
   setTimeout(() => {
     imgEl.src = project.image;
     imgEl.alt = project.title;
-    if (titleEl) titleEl.textContent = project.title;
     if (descEl) descEl.textContent = project.description;
     
     imgEl.style.opacity = "1";
     imgEl.style.transform = "scale(1)";
   }, 180);
+}
+
+function setupBeforeAfterSlider() {
+  const container = document.getElementById('before-after-container');
+  const slider = document.getElementById('before-after-slider');
+  const rangeInput = document.getElementById('slider-range-input');
+  
+  if (!container || !slider || !rangeInput) return;
+  
+  // Función central para actualizar el deslizamiento de forma consistente
+  function updateSlider(val) {
+    const clampedVal = Math.max(0, Math.min(100, val));
+    slider.style.setProperty('--clip-percent', `${100 - clampedVal}%`);
+    slider.style.setProperty('--handle-left', `${clampedVal}%`);
+    rangeInput.value = clampedVal;
+  }
+
+  // Escuchar el input deslizante para escritorio
+  rangeInput.addEventListener('input', (e) => {
+    updateSlider(e.target.value);
+  });
+
+  // Manejo de eventos táctiles para soporte móvil robusto (táctil directo)
+  container.addEventListener('touchmove', (e) => {
+    if (e.touches.length === 1) {
+      const rect = container.getBoundingClientRect();
+      const touchX = e.touches[0].clientX - rect.left;
+      const percent = (touchX / rect.width) * 100;
+      updateSlider(percent);
+      
+      // Evitar el scroll vertical de la página mientras se interactúa con el slider
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      const rect = container.getBoundingClientRect();
+      const touchX = e.touches[0].clientX - rect.left;
+      const percent = (touchX / rect.width) * 100;
+      updateSlider(percent);
+    }
+  }, { passive: true });
+}
+
+/**
+ * Selector de Modos del Portafolio: Grilla 3D / Carrusel 3D (Opción 3)
+ */
+let portfolioViewMode = "grid"; 
+let currentCarouselIndex = 0;
+
+function setupPortfolioModeSelector() {
+  const modeButtons = document.querySelectorAll('.mode-btn');
+  const gridContainer = document.getElementById('portfolio-grid');
+  const carouselContainer = document.getElementById('portfolio-carousel-3d');
+  
+  if (modeButtons.length === 0 || !gridContainer || !carouselContainer) return;
+  
+  modeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modeButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      portfolioViewMode = btn.getAttribute('data-mode');
+      
+      if (portfolioViewMode === 'grid') {
+        gridContainer.style.display = 'grid';
+        carouselContainer.classList.remove('active');
+        // Renderizar la grilla y re-aplicar filtros
+        renderPortfolioGrid();
+      } else {
+        gridContainer.style.display = 'none';
+        carouselContainer.classList.add('active');
+        // Renderizar el carrusel 3D
+        renderPortfolioCarousel3D();
+      }
+    });
+  });
+}
+
+/**
+ * Efecto de Tarjetas con Inclinación 3D e Brillo (Opción 2)
+ */
+function setupTiltEffects() {
+  if (portfolioViewMode !== 'grid') return;
+  
+  const items = document.querySelectorAll('#portfolio-grid .portfolio-item');
+  items.forEach(item => {
+    let glare = item.querySelector('.glare-overlay');
+    if (!glare) {
+      glare = document.createElement('div');
+      glare.className = 'glare-overlay';
+      item.appendChild(glare);
+    }
+    
+    // Resetear al salir
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+      glare.style.background = 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 100%)';
+    });
+    
+    // Inclinar en movimiento
+    item.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left; 
+      const y = e.clientY - rect.top;  
+      
+      const width = rect.width;
+      const height = rect.height;
+      
+      // Ángulo de rotación máximo de 10 grados
+      const rotX = ((height / 2) - y) / (height / 2) * 10;
+      const rotY = (x - (width / 2)) / (width / 2) * 10;
+      
+      // Brillo radial dinámico
+      const glareX = (x / width) * 100;
+      const glareY = (y / height) * 100;
+      
+      item.style.transform = `perspective(1000px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale3d(1.02, 1.02, 1.02)`;
+      glare.style.background = `radial-gradient(circle at ${glareX}% ${glareY}%, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%)`;
+    });
+  });
+}
+
+/**
+ * Renderiza el Carrusel 3D Coverflow (Opción 3)
+ */
+function renderPortfolioCarousel3D() {
+  const container = document.getElementById('carousel-inner-3d');
+  const template = document.getElementById('portfolio-card-template');
+  
+  if (!container || !template) return;
+  
+  container.innerHTML = "";
+  currentCarouselIndex = 0;
+  
+  const activeItems = AppState.filteredItems;
+  if (activeItems.length === 0) {
+    container.innerHTML = `<p style="color:var(--text-muted); padding:40px;" data-i18n="portfolio.no_items">No hay proyectos en esta categoría.</p>`;
+    return;
+  }
+  
+  activeItems.forEach((project, idx) => {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'carousel-item-3d';
+    wrapper.setAttribute('data-index', idx);
+    wrapper.setAttribute('data-project-id', project.id);
+    
+    // Clonar plantilla del portafolio
+    const clone = template.content.cloneNode(true);
+    const item = clone.querySelector('.portfolio-item');
+    const img = clone.querySelector('.portfolio-img');
+    const categorySpan = clone.querySelector('.portfolio-item-category');
+    const title = clone.querySelector('.portfolio-item-title');
+    
+    if (img) img.src = project.image;
+    if (categorySpan) categorySpan.textContent = AppState.translations.portfolio.categories[project.category] || project.category;
+    if (title) title.textContent = project.title;
+    
+    if (item) {
+      item.classList.remove('reveal', 'reveal-roller'); // Evita conflicto de reveal
+      
+      // Al hacer click, si es el activo abre lightbox, si no, gira
+      wrapper.addEventListener('click', () => {
+        if (idx === currentCarouselIndex) {
+          openLightbox(project.id);
+        } else {
+          currentCarouselIndex = idx;
+          updateCarousel3DPositions();
+        }
+      });
+    }
+    
+    wrapper.appendChild(clone);
+    container.appendChild(wrapper);
+  });
+  
+  // Asignar controladores de navegación
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  
+  if (prevBtn && nextBtn) {
+    const newPrev = prevBtn.cloneNode(true);
+    const newNext = nextBtn.cloneNode(true);
+    prevBtn.parentNode.replaceChild(newPrev, prevBtn);
+    nextBtn.parentNode.replaceChild(newNext, nextBtn);
+    
+    newPrev.addEventListener('click', () => navigateCarousel3D(-1));
+    newNext.addEventListener('click', () => navigateCarousel3D(1));
+  }
+  
+  updateCarousel3DPositions();
+}
+
+/**
+ * Calcula y aplica las coordenadas tridimensionales en base al elemento activo
+ */
+function updateCarousel3DPositions() {
+  const items = document.querySelectorAll('.carousel-item-3d');
+  const total = items.length;
+  if (total === 0) return;
+  
+  items.forEach((item) => {
+    const idx = parseInt(item.getAttribute('data-index'));
+    item.classList.remove('active-item', 'visible');
+    
+    let offset = idx - currentCarouselIndex;
+    
+    // Tratamiento circular para rotación infinita
+    if (offset < -1 && offset < -(total / 2)) {
+      offset += total;
+    } else if (offset > 1 && offset > total / 2) {
+      offset -= total;
+    }
+    
+    if (offset === 0) {
+      // Centro activo (Frontal)
+      item.style.transform = 'translateX(0) translateZ(100px) rotateY(0deg)';
+      item.style.opacity = '1';
+      item.style.zIndex = '5';
+      item.classList.add('active-item', 'visible');
+    } else if (offset === 1) {
+      // Derecha
+      item.style.transform = 'translateX(240px) translateZ(10px) rotateY(-35deg)';
+      item.style.opacity = '0.75';
+      item.style.zIndex = '3';
+      item.classList.add('visible');
+    } else if (offset === -1) {
+      // Izquierda
+      item.style.transform = 'translateX(-240px) translateZ(10px) rotateY(35deg)';
+      item.style.opacity = '0.75';
+      item.style.zIndex = '3';
+      item.classList.add('visible');
+    } else {
+      // Fondo (Ocultos)
+      item.style.transform = `translateX(${offset * 120}px) translateZ(-150px) rotateY(0deg)`;
+      item.style.opacity = '0';
+      item.style.zIndex = '1';
+    }
+  });
+}
+
+/**
+ * Rotación del carrusel 3D
+ */
+function navigateCarousel3D(direction) {
+  const items = document.querySelectorAll('.carousel-item-3d');
+  const total = items.length;
+  if (total <= 1) return;
+  
+  currentCarouselIndex = (currentCarouselIndex + direction + total) % total;
+  updateCarousel3DPositions();
 }

@@ -119,6 +119,12 @@
     "badge": "Our Work",
     "title": "Project Gallery",
     "subtitle": "A showcase of the care, professionalism, and detail we apply to every painting job in Chicago and suburbs.",
+    "before": "Before",
+    "after": "After",
+    "modes": {
+      "grid": "3D Grid",
+      "carousel": "3D Carousel"
+    },
     "categories": {
       "all": "All",
       "interior": "Interior",

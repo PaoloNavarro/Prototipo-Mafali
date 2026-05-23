@@ -119,6 +119,12 @@
     "badge": "Nuestro Trabajo",
     "title": "Galería de Proyectos",
     "subtitle": "Una muestra del cuidado, profesionalismo y detalle que aplicamos en cada trabajo de pintura en Chicago y suburbios.",
+    "before": "Antes",
+    "after": "Después",
+    "modes": {
+      "grid": "Grilla 3D",
+      "carousel": "Carrusel 3D"
+    },
     "categories": {
       "all": "Todos",
       "interior": "Interiores",
