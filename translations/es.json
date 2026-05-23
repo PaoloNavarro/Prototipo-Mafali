@@ -1,0 +1,159 @@
+{
+  "meta": {
+    "title": "Mafali Bros Painting Service LLC | Pintores Profesionales en Chicago IL",
+    "description": "Transforma tu hogar con los mejores pintores en Chicago, IL. Pintura residencial y comercial de alta calidad. ¡Solicita tu cotización gratuita hoy!",
+    "keywords": "servicio de pintura chicago, pintores en chicago, pintura residencial chicago, pintura comercial, mafali bros painting, pintores profesionales"
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Nosotros",
+    "services": "Servicios",
+    "portfolio": "Portafolio",
+    "contact": "Contacto",
+    "cta": "Llamar Ahora"
+  },
+  "hero": {
+    "badge": "Servicios de Pintura Profesional",
+    "title": "Misma Casa. Nuevo Wow.",
+    "subtitle": "Transformar tu espacio vital puede ser un viaje emocionante que le dé una nueva vida a tu hogar mientras refleja tu estilo y necesidades en constante evolución.",
+    "cta_primary": "Obtener Cotización Gratis",
+    "cta_secondary": "Ver Servicios"
+  },
+  "about": {
+    "badge": "Sobre Nosotros",
+    "title": "Pintores Profesionales con Pasión por el Detalle",
+    "description_1": "En Mafali Bros Painting Service LLC, nos enorgullece ofrecer servicios de pintura residencial y comercial de la más alta calidad en Chicago, IL. Como empresa familiar, entendemos que tu hogar o negocio es tu mayor inversión. Por eso, tratamos cada proyecto con el máximo cuidado, preparación meticulosa y acabados impecables.",
+    "description_2": "Nuestra dedicación al cliente se basa en la honestidad, puntualidad y excelencia en el servicio. Desde la preparación de superficies hasta el último toque de color, logramos que tu espacio tenga ese efecto 'Wow' que siempre has deseado.",
+    "mision_title": "Nuestra Misión",
+    "mision_desc": "Proporcionar servicios de pintura excepcionales y personalizados que embellezcan y protejan las propiedades de nuestros clientes, garantizando acabados duraderos y una experiencia sin estrés a través de la excelencia y el profesionalismo.",
+    "vision_title": "Nuestra Visión",
+    "vision_desc": "Ser reconocidos como la empresa de pintura residencial y comercial de referencia en Chicago y sus alrededores, destacando por nuestra integridad, calidad artesanal superior y el impacto transformador de nuestro trabajo."
+  },
+  "services": {
+    "badge": "Qué Hacemos",
+    "title": "Nuestros Servicios Especializados",
+    "subtitle": "Ofrecemos soluciones completas de pintura para interiores y exteriores, utilizando materiales de primera calidad para garantizar resultados duraderos.",
+    "items": [
+      {
+        "id": "interior",
+        "icon": "palette",
+        "title": "Pintura de Interiores",
+        "description": "Transformamos salas, cocinas, habitaciones y oficinas. Incluye reparación de paneles de yeso (drywall), remoción de papel tapiz, resanes y aplicación de pintura premium de bajo olor."
+      },
+      {
+        "id": "exterior",
+        "icon": "home",
+        "title": "Pintura de Exteriores",
+        "description": "Protegemos y embellecemos la fachada de tu casa. Realizamos lavado a presión, raspado de pintura vieja, sellado de grietas y aplicación de pinturas resistentes a los climas más exigentes."
+      },
+      {
+        "id": "preparation",
+        "icon": "brush",
+        "title": "Preparación de Superficies",
+        "description": "El secreto de una pintura duradera está en la preparación. Lijamos, resanamos imperfecciones, aplicamos selladores de alta adherencia y garantizamos una base perfecta antes de pintar."
+      },
+      {
+        "id": "commercial",
+        "icon": "building",
+        "title": "Pintura Comercial",
+        "description": "Mejoramos la apariencia de tu negocio u oficina. Trabajamos con horarios flexibles para minimizar la interrupción de tus actividades comerciales, con acabados rápidos y profesionales."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contacto",
+    "title": "¿Listo para Transformar tu Espacio?",
+    "subtitle": "Ponte en contacto con Oscar, nuestro especialista, para agendar una cotización sin compromiso o resolver cualquier duda.",
+    "phone_label": "Llamada Directa (Oscar/Especialista)",
+    "phone_value": "(773) 729-9252",
+    "schedule_label": "Horario de Atención",
+    "schedule_value": "Lunes a Sábado: 8:00 AM - 6:00 PM",
+    "form_name": "Nombre Completo",
+    "form_email": "Correo Electrónico",
+    "form_phone": "Teléfono",
+    "form_service": "Servicio Requerido",
+    "form_service_placeholder": "Selecciona un servicio",
+    "form_service_options": {
+      "interior": "Pintura de Interiores",
+      "exterior": "Pintura de Exteriores",
+      "commercial": "Pintura Comercial / Otro"
+    },
+    "form_message": "Cuéntanos sobre tu proyecto",
+    "form_message_placeholder": "Describe lo que necesitas pintar, dimensiones aproximadas o detalles específicos...",
+    "form_submit": "Enviar Solicitud",
+    "form_sending": "Enviando...",
+    "form_success": "¡Mensaje enviado con éxito! Oscar se pondrá en contacto contigo muy pronto.",
+    "form_error": "Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo o llámanos directamente."
+  },
+  "footer": {
+    "about_title": "Mafali Bros",
+    "about_desc": "Servicios profesionales de pintura residencial y comercial en Chicago y suburbios cercanos. Calidad, garantía y acabados premium.",
+    "links_title": "Enlaces Rápidos",
+    "contact_title": "Contacto de Emergencia / Consultas",
+    "copyright": "© {year} Mafali Bros Painting Service LLC. Todos los derechos reservados. Diseñado para un rendimiento óptimo."
+  },
+  "whatsapp_chatbot": {
+    "status_online": "Activo ahora",
+    "welcome_msg": "¡Hola! Bienvenido a Mafali Bros. Soy el asistente virtual de Oscar. ¿En qué te puedo ayudar hoy?",
+    "btn_direct": "Escribir en WhatsApp",
+    "options": {
+      "opt_estimate": "¿Cómo solicito una cotización gratis?",
+      "opt_hours": "¿Cuáles son sus horarios de servicio?",
+      "opt_services": "¿Qué tipos de pintura ofrecen?",
+      "opt_direct": "Hablar directo con Oscar"
+    },
+    "responses": {
+      "resp_estimate": "¡Es muy fácil! Puedes llenar el formulario de contacto en esta página o podemos agendarla ahora mismo por WhatsApp. ¿Vamos a WhatsApp para coordinar tu cotización?",
+      "resp_hours": "Ofrecemos atención telefónica y servicios de lunes a sábado, de 8:00 AM a 6:00 PM. ¿Te gustaría enviarle un WhatsApp directo a Oscar para confirmar una fecha?",
+      "resp_services": "Nos especializamos en pintura residencial (interiores y exteriores), preparación profunda de superficies y pintura comercial en Chicago. ¿Quieres coordinar los detalles con Oscar en WhatsApp?",
+      "resp_direct": "¡Perfecto! Te redirigiremos al chat directo de WhatsApp de Oscar en un instante. Presiona el botón de abajo para chatear."
+    },
+    "wp_messages": {
+      "msg_estimate": "Hola Oscar! Me gustaría solicitar una cotización gratuita para mi proyecto de pintura.",
+      "msg_hours": "Hola Oscar! Me gustaría consultar acerca de sus horarios disponibles para agendar un trabajo de pintura.",
+      "msg_services": "Hola Oscar! Me gustaría recibir información sobre sus servicios de pintura residencial y comercial.",
+      "msg_direct": "Hola Oscar! Me gustaría platicar contigo directamente sobre un proyecto de pintura."
+    }
+  },
+  "portfolio": {
+    "badge": "Nuestro Trabajo",
+    "title": "Galería de Proyectos",
+    "subtitle": "Una muestra del cuidado, profesionalismo y detalle que aplicamos en cada trabajo de pintura en Chicago y suburbios.",
+    "categories": {
+      "all": "Todos",
+      "interior": "Interiores",
+      "exterior": "Exteriores",
+      "commercial": "Comerciales"
+    },
+    "items": [
+      {
+        "id": 1,
+        "title": "Residencia de Lujo - Interiores",
+        "category": "interior",
+        "description": "Pintura completa de sala y comedor con acabados mate y preparación profunda de paneles.",
+        "image": "assets/portfolio_1.png"
+      },
+      {
+        "id": 2,
+        "title": "Renovación Exterior Residencial",
+        "category": "exterior",
+        "description": "Pintura de fachada con pintura acrílica elástica de alta protección contra el clima.",
+        "image": "assets/portfolio_2.png"
+      },
+      {
+        "id": 3,
+        "title": "Oficinas Comerciales Integrales",
+        "category": "commercial",
+        "description": "Acabados de pintura corporativa limpia con mínima interrupción de labores.",
+        "image": "assets/portfolio_3.png"
+      },
+      {
+        "id": 4,
+        "title": "Proyecto Antes y Después",
+        "category": "exterior",
+        "description": "Restauración de pintura de casa residencial clásica en Chicago.",
+        "image": "assets/before_after_painting.png"
+      }
+    ]
+  }
+}

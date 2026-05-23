@@ -1,0 +1,56 @@
+<div class="whatsapp-chatbot-widget" id="whatsapp-chatbot">
+  <!-- Burbuja Flotante de Contacto / Asistencia -->
+  <button class="whatsapp-btn-float" id="whatsapp-chat-trigger" aria-label="Abrir Asistente de Contacto" aria-haspopup="true" aria-expanded="false">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="contact-chat-icon">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-width="3"/>
+    </svg>
+    <!-- Globo de Notificación de Mensaje Nuevo -->
+    <span class="chat-badge" id="chat-notification-badge">1</span>
+  </button>
+
+  <!-- Ventana del Chatbot Emergente -->
+  <div class="whatsapp-chat-window" id="whatsapp-chat-window" aria-hidden="true">
+    
+    <!-- Encabezado del Chat -->
+    <div class="chat-header">
+      <div class="chat-user-info">
+        <div class="chat-avatar-wrapper">
+          <!-- Avatar del especialista Oscar -->
+          <div class="chat-avatar">O</div>
+          <span class="status-dot online"></span>
+        </div>
+        <div class="chat-user-details">
+          <h4 class="chat-username">Oscar / Specialist</h4>
+          <span class="chat-status" data-i18n="whatsapp_chatbot.status_online">Activo ahora</span>
+        </div>
+      </div>
+      <!-- Botón de Cerrar -->
+      <button class="chat-close-btn" id="whatsapp-chat-close" aria-label="Cerrar chat">✕</button>
+    </div>
+
+    <!-- Historial de Conversación (Mensajes del Chat) -->
+    <div class="chat-body" id="chat-body">
+      <!-- Aquí se inyectarán las burbujas de diálogo dinámicamente -->
+    </div>
+
+    <!-- Panel de Control y Opciones Rápidas -->
+    <div class="chat-footer">
+      <!-- Opciones Rápidas de Preguntas Frecuentes (Píldoras) -->
+      <div class="chat-options-container" id="chat-options">
+        <!-- Los botones de preguntas se renderizarán aquí -->
+      </div>
+      
+      <!-- Enlace / Botón Final de Redirección -->
+      <div class="chat-action-wrapper">
+        <a href="#" class="chat-submit-btn" id="whatsapp-direct-link" target="_blank" rel="noopener noreferrer">
+          <svg class="send-icon" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+          </svg>
+          <span id="chat-submit-text" data-i18n="whatsapp_chatbot.btn_direct">Escribir en WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
