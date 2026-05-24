@@ -2046,6 +2046,9 @@ footer {
   border: 1px solid var(--border-color);
   position: relative;
   aspect-ratio: 16 / 9;
+  touch-action: none; /* Desactiva scroll nativo y zoom sobre esta caja */
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .before-after-slider {
@@ -2165,7 +2168,7 @@ footer {
     aspect-ratio: 4 / 3;
   }
   .slider-img {
-    background-size: cover; /* Ajuste adaptado para relaciones de aspecto móvil */
+    /* Sin background-size: cover — se hereda 200% 100% del estilo base */
   }
   .slider-label {
     bottom: 12px;
@@ -2174,6 +2177,40 @@ footer {
   }
   .label-before { left: 12px; }
   .label-after { right: 12px; }
+
+  /* Ajustes del selector de modos para móviles (evitar desborde lateral) */
+  .portfolio-mode-selector {
+    margin-bottom: 24px;
+    padding: 3px;
+  }
+  .mode-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    gap: 4px;
+  }
+  .mode-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  /* Ajustes del widget flotante de WhatsApp en móviles */
+  .whatsapp-chatbot-widget {
+    bottom: 16px;
+    right: 16px;
+  }
+  .whatsapp-btn-float {
+    width: 50px;
+    height: 50px;
+  }
+  .whatsapp-btn-float svg {
+    width: 24px;
+    height: 24px;
+  }
+  .whatsapp-chat-window {
+    bottom: 70px;
+    right: 0;
+    max-width: calc(100vw - 32px);
+  }
 }
 
 /* ==========================================================================

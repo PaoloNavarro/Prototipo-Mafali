@@ -776,46 +776,59 @@ function showLightboxImage(index) {
 function setupBeforeAfterSlider() {
   const container = document.getElementById('before-after-container');
   const slider = document.getElementById('before-after-slider');
-  const rangeInput = document.getElementById('slider-range-input');
   
-  if (!container || !slider || !rangeInput) return;
+  if (!container || !slider) return;
   
-  // Función central para actualizar el deslizamiento de forma consistente
-  function updateSlider(val) {
-    const clampedVal = Math.max(0, Math.min(100, val));
-    slider.style.setProperty('--clip-percent', `${100 - clampedVal}%`);
-    slider.style.setProperty('--handle-left', `${clampedVal}%`);
-    rangeInput.value = clampedVal;
+  let isDragging = false;
+  
+  // Función para actualizar las propiedades CSS basándose en el clientX
+  function updateSlider(clientX) {
+    const rect = container.getBoundingClientRect();
+    const x = clientX - rect.left;
+    const percent = (x / rect.width) * 100;
+    const clampedPercent = Math.max(0, Math.min(100, percent));
+    
+    slider.style.setProperty('--clip-percent', `${100 - clampedPercent}%`);
+    slider.style.setProperty('--handle-left', `${clampedPercent}%`);
   }
 
-  // Escuchar el input deslizante para escritorio
-  rangeInput.addEventListener('input', (e) => {
-    updateSlider(e.target.value);
+  // --- INTERACCIÓN ESCRITORIO (MOUSE) ---
+  container.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    updateSlider(e.clientX);
   });
 
-  // Manejo de eventos táctiles para soporte móvil robusto (táctil directo)
-  container.addEventListener('touchmove', (e) => {
-    if (e.touches.length === 1) {
-      const rect = container.getBoundingClientRect();
-      const touchX = e.touches[0].clientX - rect.left;
-      const percent = (touchX / rect.width) * 100;
-      updateSlider(percent);
-      
-      // Evitar el scroll vertical de la página mientras se interactúa con el slider
-      if (e.cancelable) {
-        e.preventDefault();
-      }
-    }
+  window.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    updateSlider(e.clientX);
+  });
+
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // --- INTERACCIÓN MÓVIL (TÁCTIL DIRECTO) ---
+  container.addEventListener('touchstart', (e) => {
+    if (e.touches.length !== 1) return;
+    isDragging = true;
+    e.preventDefault();
+    updateSlider(e.touches[0].clientX);
   }, { passive: false });
 
-  container.addEventListener('touchstart', (e) => {
-    if (e.touches.length === 1) {
-      const rect = container.getBoundingClientRect();
-      const touchX = e.touches[0].clientX - rect.left;
-      const percent = (touchX / rect.width) * 100;
-      updateSlider(percent);
-    }
-  }, { passive: true });
+  window.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    if (e.touches.length !== 1) return;
+    e.preventDefault();
+    updateSlider(e.touches[0].clientX);
+  }, { passive: false });
+
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  window.addEventListener('touchcancel', () => {
+    isDragging = false;
+  });
 }
 
 /**
