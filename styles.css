@@ -250,18 +250,18 @@ header {
   pointer-events: auto; /* Reactiva los clicks dentro de la barra */
 }
 
-/* Trazo de pincelada decorativo debajo de la navbar flotante */
+/* Trazo decorativo de onda de pintura fluida debajo de la navbar flotante */
 .navbar-inner::after {
   content: '';
   position: absolute;
-  bottom: -6px;
-  left: 10%;
-  width: 80%;
-  height: 6px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 10' preserveAspectRatio='none'%3E%3Cpath d='M5,5 Q75,1 150,6 T295,4' fill='none' stroke='%23C84B31' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E");
+  bottom: -14px;
+  left: 0;
+  width: 100%;
+  height: 15px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C120,20 240,5 360,25 C480,45 600,10 720,30 C840,50 960,15 1080,25 C1200,35 1320,10 1440,20 L1440,0 L0,0 Z' fill='%23C84B31'/%3E%3C/svg%3E");
   background-size: 100% 100%;
   background-repeat: no-repeat;
-  opacity: 0.85;
+  opacity: 0.95;
   z-index: -1;
   transition: var(--transition-smooth);
 }
@@ -277,8 +277,8 @@ header.scrolled .navbar-inner {
 }
 
 header.scrolled .navbar-inner::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 10' preserveAspectRatio='none'%3E%3Cpath d='M5,5 Q75,1 150,6 T295,4' fill='none' stroke='%23052659' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E"); /* Pincelada cambia a azul primario en scroll */
-  opacity: 0.6;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40' preserveAspectRatio='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 C120,20 240,5 360,25 C480,45 600,10 720,30 C840,50 960,15 1080,25 C1200,35 1320,10 1440,20 L1440,0 L0,0 Z' fill='%23052659'/%3E%3C/svg%3E"); /* Onda de pintura cambia a azul primario en scroll */
+  opacity: 0.9;
 }
 
 header.scrolled .nav-container {
@@ -427,9 +427,10 @@ header.scrolled .nav-container {
   }
 
   .navbar-inner::after {
-    left: 5%;
-    width: 90%;
-    bottom: -5px;
+    left: 0;
+    width: 100%;
+    bottom: -10px;
+    height: 11px;
   }
 
   .nav-container {
